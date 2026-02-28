@@ -338,3 +338,5 @@ The Inventory Management System provides a secure, scalable,
 and modular solution for inventory tracking and supplier
 management. The separation of product and inventory logic
 ensures clean architecture and maintainability.
+
+===========================================================
