@@ -10,6 +10,7 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showDialog, setShowDialog] = useState(false); // NEW STATE
 
   const validate = () => {
     let newErrors = {};
@@ -38,7 +39,7 @@ const Login = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       setErrors({});
-      alert("Login Successful 🎉");
+      setShowDialog(true); // SHOW CUSTOM DIALOG
     } else {
       setErrors(validationErrors);
     }
@@ -97,6 +98,26 @@ const Login = () => {
           </span>
         </p>
       </div>
+
+      {/* ✅ CUSTOM DIALOG BOX */}
+      {showDialog && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white p-6 rounded-xl shadow-lg text-center w-80">
+            <h3 className="text-lg font-semibold mb-3">
+              Login Successful 🎉
+            </h3>
+            <button
+              onClick={() => {
+                setShowDialog(false);
+                navigate("/dashboard"); // optional redirect
+              }}
+              className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
