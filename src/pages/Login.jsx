@@ -38,7 +38,7 @@ const Login = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       setErrors({});
-      alert("Login Successful 🎉");
+      navigate("/dashboard");
     } else {
       setErrors(validationErrors);
     }
