@@ -39,6 +39,7 @@ const Login = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       setErrors({});
+      navigate("/dashboard");
       setShowDialog(true); // SHOW CUSTOM DIALOG
     } else {
       setErrors(validationErrors);
