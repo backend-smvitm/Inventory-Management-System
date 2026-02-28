@@ -1,4 +1,3 @@
-===========================================================
 INVENTORY MANAGEMENT SYSTEM
 Complete Technical Documentation
 Version: 1.0
