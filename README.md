@@ -1,16 +1,109 @@
-# React + Vite
+# 📦 INVENTORY MANAGEMENT SYSTEM – FRONTEND
+---
+## 📖 Overview
+The Inventory Management System is a web-based application designed to manage products, suppliers, and stock efficiently.
+This frontend is built using **React + Vite + Tailwind CSS** and provides a responsive user interface for managing inventory operations.
+The system is designed to integrate with a backend REST API for full functionality.
+---
+## 🎯 Objectives
+* Manage product inventory efficiently
+* Track stock levels and low stock alerts
+* Maintain supplier details
+* Provide a dashboard for quick insights
+* Enable role-based access (Admin / Staff)
+---
+## 🛠️ Tech Stack
+* **Frontend Framework:** React (Vite)
+* **Styling:** Tailwind CSS
+* **State Management:** Context API
+* **Routing:** React Router
+* **API Integration:** Axios / Fetch (planned)
+---
+## ✨ Features
+### 🔐 Authentication Module
+* User Signup
+* User Login
+* Role-based access (Admin / Staff)
+* Secure authentication handling (frontend level)
+---
+### 📊 Dashboard Module
+* Overview of total products
+* Low stock alerts
+* Summary statistics
+* Responsive UI
+---
+### 📦 Product Management
+* Add product
+* Update product
+* Delete product
+* View product list
+* Search and filter functionality
+---
+### 📉 Inventory Tracking
+* Track stock quantity
+* Low stock indication
+* Transaction history (stock in / stock out)
+**Low Stock Logic:**
+```js
+IsLowStock = CurrentQuantity <= MinimumThreshold
+```
+---
+### 🚚 Supplier Management
+* Add supplier
+* Update supplier
+* View supplier details
+---
+## 📁 Project Structure
+```
+inventory-frontend/
+│
+├── public/
+│
+├── src/
+│   ├── assets/            # Images & icons
+│   ├── components/        # Reusable UI components
+│   ├── pages/             # Application pages
+│   ├── context/           # Global state management
+│   ├── services/          # API calls
+│   ├── hooks/             # Custom hooks
+│   ├── utils/             # Helper functions
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+├── package.json
+└── README.md
+```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Installation
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/inventory-frontend.git
+cd inventory-frontend
+```
+### 2. Install Dependencies
+```bash
+npm install
+```
+### 3. Run the Application
+```bash
+npm run dev
+```
+---
+## 🌐 Application URL
+```
+http://localhost:5173
+```
+---
+## 🎨 Tailwind CSS Setup
+Ensure the following is included in `index.css`:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
