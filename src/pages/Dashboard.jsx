@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../components/Button";
 
 const Dashboard = () => {
   return (
@@ -21,9 +22,12 @@ const Dashboard = () => {
         {/* Navbar */}
         <nav className="bg-white shadow p-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold">Dashboard</h1>
-          <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
-            Logout
-          </button>
+
+          {/* Reusable Button */}
+          <Button 
+            text="Logout"
+            onClick={() => console.log("Logout clicked")}
+          />
         </nav>
 
         {/* Content */}
@@ -32,7 +36,6 @@ const Dashboard = () => {
             Welcome Back 👋
           </h2>
 
-          {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
