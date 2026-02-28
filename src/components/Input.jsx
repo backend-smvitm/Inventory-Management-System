@@ -3,7 +3,8 @@ export default function Input({
   placeholder,
   value,
   onChange,
-  label
+  label,
+  ...props
 }) {
   return (
     <div className="flex flex-col gap-1 w-full">
@@ -21,6 +22,7 @@ export default function Input({
         className="px-3 py-2 border border-gray-300 rounded-lg
                    focus:outline-none focus:ring-2 
                    focus:ring-blue-500 focus:border-blue-500"
+        {...props}
       />
     </div>
   );
