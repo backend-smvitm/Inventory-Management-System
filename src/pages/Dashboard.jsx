@@ -1,68 +1,25 @@
 import React from "react";
-import Button from "../components/Button";
+import DashboardLayout from "../layouts/DashboardLayout";
+import StatCard from "../components/StatCard";
+
+const stats = [
+  { title: "Total Users", value: "120" },
+  { title: "Products", value: "85" },
+  { title: "Orders", value: "75" },
+  { title: "Revenue", value: "₹45,000" },
+];
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen flex bg-gray-100">
+    <DashboardLayout>
+      <h2 className="text-2xl font-bold mb-6">Welcome Back 👋</h2>
 
-      {/* Sidebar */}
-      <div className="w-64 bg-gray-900 text-white p-6 hidden md:block">
-        <h2 className="text-2xl font-bold mb-8">MyApp</h2>
-
-        <ul className="space-y-4">
-          <li className="hover:text-blue-400 cursor-pointer">Dashboard</li>
-          <li className="hover:text-blue-400 cursor-pointer">Profile</li>
-          <li className="hover:text-blue-400 cursor-pointer">Settings</li>
-        </ul>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((s) => (
+          <StatCard key={s.title} title={s.title} value={s.value} />
+        ))}
       </div>
-
-      {/* Main Section */}
-      <div className="flex-1 flex flex-col">
-
-        {/* Navbar */}
-        <nav className="bg-white shadow p-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">Dashboard</h1>
-
-          {/* Reusable Button */}
-          <Button 
-            text="Logout"
-            onClick={() => console.log("Logout clicked")}
-          />
-        </nav>
-
-        {/* Content */}
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-6">
-            Welcome Back 👋
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-gray-500">Total Users</h3>
-              <p className="text-3xl font-bold mt-2">120</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-gray-500">Products</h3>
-              <p className="text-3xl font-bold mt-2">85</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-gray-500">Orders</h3>
-              <p className="text-3xl font-bold mt-2">75</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-gray-500">Revenue</h3>
-              <p className="text-3xl font-bold mt-2">₹45,000</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
