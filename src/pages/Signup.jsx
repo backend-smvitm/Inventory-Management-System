@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import AuthLayout from "../layouts/AuthLayout";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -59,30 +60,41 @@ const Signup = () => {
       setErrors({});
       setSuccess("Signup Successful 🎉");
 
+      // clear form and navigate to login after a brief delay
       setFormData({
         name: "",
         email: "",
         password: "",
         confirmPassword: "",
       });
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
     } else {
       setErrors(validationErrors);
       setSuccess("");
     }
   };
 
+  useEffect(() => {
+    // if already authenticated, send to dashboard
+    if (localStorage.getItem("auth")) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-200 p-4">
-      <div className="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-6">
-          Create Account
-        </h2>
+    <AuthLayout>
+      <h2 className="text-2xl font-bold text-center mb-6">
+        Create Account
+      </h2>
 
-        {success && (
-          <p className="text-green-600 text-center mb-4">{success}</p>
-        )}
+      {success && (
+        <p className="text-green-600 text-center mb-4">{success}</p>
+      )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
 
           <Input
             label="Name"
@@ -91,6 +103,7 @@ const Signup = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your name"
+            error={errors.name}
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name}</p>
@@ -103,6 +116,7 @@ const Signup = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email"
+            error={errors.email}
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email}</p>
@@ -115,6 +129,7 @@ const Signup = () => {
             value={formData.password}
             onChange={handleChange}
             placeholder="Enter your password"
+            error={errors.password}
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password}</p>
@@ -127,6 +142,7 @@ const Signup = () => {
             value={formData.confirmPassword}
             onChange={handleChange}
             placeholder="Confirm your password"
+            error={errors.confirmPassword}
           />
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm">
@@ -149,8 +165,7 @@ const Signup = () => {
             Login
           </span>
         </p>
-      </div>
-    </div>
+    </AuthLayout>
   );
 };
 
