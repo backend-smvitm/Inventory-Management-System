@@ -106,7 +106,6 @@ const Login = () => {
             Sign Up
           </span>
         </p>
-      </div>
 
       {/* Custom Dialog */}
       {showDialog && (
