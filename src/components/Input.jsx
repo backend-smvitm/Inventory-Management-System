@@ -9,23 +9,17 @@ export default function Input({
   ...props
 }) {
   return (
-    <div className="flex flex-col gap-1 w-full">
-      {label && (
-        <label className="text-sm font-medium text-gray-700">
-          {label}
-        </label>
-      )}
-      {/* error display is handled by parent */}
+    <div className="flex w-full flex-col gap-1">
+      {label && <label className="text-sm font-medium text-slate-700">{label}</label>}
 
       <input
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={`px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 
-                   focus:ring-blue-500 focus:border-blue-500 ${
-                     error ? "border-red-500" : "border-gray-300"
-                   } ${className}`}
+        className={`w-full rounded-lg border bg-white px-3 py-2.5 text-sm text-slate-700 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 ${
+          error ? "border-red-500" : "border-slate-300"
+        } ${className}`}
         {...props}
       />
     </div>

@@ -1,22 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "./Button";
+import { getPageTitle } from "./navigation";
 
 export default function Navbar({ onToggleSidebar }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
-    // clear any auth flag and redirect
     localStorage.removeItem("auth");
     navigate("/login");
   };
 
   return (
-    <nav className="bg-white shadow p-4 flex justify-between items-center">
+    <nav className="flex items-center justify-between border-b border-slate-200 bg-white px-4 py-4 shadow-sm sm:px-6">
       <div className="flex items-center gap-4">
-        {/* hamburger for mobile */}
         <button
-          className="md:hidden text-gray-700 hover:text-gray-900"
+          className="rounded-lg p-2 text-slate-700 transition hover:bg-slate-100 md:hidden"
           onClick={onToggleSidebar}
         >
           <svg
@@ -35,10 +35,15 @@ export default function Navbar({ onToggleSidebar }) {
           </svg>
         </button>
 
-        <h1 className="text-xl font-semibold">Dashboard</h1>
+        <div>
+          <h1 className="text-lg font-semibold text-slate-900 sm:text-xl">
+            {getPageTitle(location.pathname)}
+          </h1>
+          <p className="text-sm text-slate-500">Inventory Management System</p>
+        </div>
       </div>
 
-      <Button text="Logout" onClick={logout} className="w-auto" />
+      <Button text="Logout" onClick={logout} fullWidth={false} />
     </nav>
   );
 }
