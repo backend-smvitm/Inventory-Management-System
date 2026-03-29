@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -13,6 +14,17 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 2500,
+          style: {
+            background: "#111827",
+            color: "#fff",
+            borderRadius: "12px",
+          },
+        }}
+      />
       <Routes>
         {/* default redirect to login */}
         <Route path="/" element={<Navigate to="/login" replace />} />

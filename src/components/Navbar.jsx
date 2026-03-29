@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { getPageTitle } from "./navigation";
@@ -9,6 +10,7 @@ export default function Navbar({ onToggleSidebar }) {
 
   const logout = () => {
     localStorage.removeItem("auth");
+    toast.success("Logged out successfully");
     navigate("/login");
   };
 
